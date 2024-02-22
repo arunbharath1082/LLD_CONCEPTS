@@ -6,7 +6,7 @@ public class Count {
     public int getValue() {
         return value;
     }
-
+///incValue
     public void incValue(int x) {
         value += x;
     }
