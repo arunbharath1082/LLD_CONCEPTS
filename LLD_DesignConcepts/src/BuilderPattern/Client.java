@@ -10,6 +10,7 @@ public class Client {
                 .setUniName("xyz")
                 .setBatch("morning")
                 .build();
-        System.out.println("DEBUG");
+
+        System.out.println(student.getBatch());
     }
 }
