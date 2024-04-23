@@ -1,4 +1,4 @@
-package practice;
+package practice.factory.button;
 
 public class UIFFactory {
     public static UIFFactoryFactory uifFactoryFactory(Platforms platforms){

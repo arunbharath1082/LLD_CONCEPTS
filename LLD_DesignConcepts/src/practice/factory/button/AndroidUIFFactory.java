@@ -1,7 +1,4 @@
-package practice;
-
-import practice.components.button.AndroidBButton;
-import practice.components.button.Button;
+package practice.factory.button;
 
 public class AndroidUIFFactory implements UIFFactoryFactory {
     @Override

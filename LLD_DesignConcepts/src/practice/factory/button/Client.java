@@ -1,6 +1,4 @@
-package practice;
-
-import practice.components.button.Button;
+package practice.factory.button;
 
 public class Client {
     public static void main(String[] args) {

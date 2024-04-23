@@ -1,4 +1,4 @@
-package practice.components.button;
+package practice.factory.button;
 
 public class AndroidBButton implements Button{
     @Override

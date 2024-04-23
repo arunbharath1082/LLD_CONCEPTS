@@ -1,6 +1,6 @@
-package practice;
+package practice.factory.button;
 
-import practice.components.button.Button;
+import practice.factory.button.Button;
 
 public interface UIFFactoryFactory {
 
