@@ -1,7 +1,7 @@
 package BuilderPattern;
 
 public class Student {
-
+//builder pattern
     String name;
     String uniName;
     int age;
