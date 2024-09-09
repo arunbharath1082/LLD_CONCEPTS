@@ -4,10 +4,40 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Practice {
     public static void main(String[] args) {
+
+        //Predicate
+            // Predicate is a functional interface in Java
+            // Predicate takes a single argument and returns a boolean
+            // Predicate has a single method test
+            Predicate<Integer> number= num -> num%2==0;
+            System.out.println(number.test(10));
+
+
+        //function
+            // Function is a functional interface in Java
+            // Function takes a single argument and returns a single value
+            // Function has a single method apply
+            // Function is used to transform an object into another object
+
+        Function<Integer,Integer> square = num -> num*num;
+        System.out.println(square.apply(5));
+
+        //functional chaining
+        // andThen
+        // compose
+        // andThen is used to combine two functions
+
+        Function<Integer,Integer> add = num -> num+2;
+        Function<Integer,Integer> multiply = num -> num*2;
+        System.out.println(add.andThen(multiply).apply(5));
+        System.out.println(add.compose(multiply).apply(5));
+
 
 
 //Filter
