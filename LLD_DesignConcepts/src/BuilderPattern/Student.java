@@ -9,9 +9,7 @@ public class Student {
     double psp;
     String batch;
     String companyName;
-    public String getName() {
-        return name;
-    }
+
 
     public Student(Builder builder) {
         this.name=builder.name;
@@ -27,7 +25,9 @@ public class Student {
 //    public void setName(String name) {
 //        this.name = name;
 //    }
-
+    public String getName() {
+    return name;
+}
     public String getUniName() {
         return uniName;
     }

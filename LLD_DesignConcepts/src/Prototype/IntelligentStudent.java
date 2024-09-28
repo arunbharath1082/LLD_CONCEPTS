@@ -1,6 +1,7 @@
 package Prototype;
 
 public class IntelligentStudent extends Student{
+    private int iq;
     public int getIq() {
         return iq;
     }
@@ -9,7 +10,7 @@ public class IntelligentStudent extends Student{
         this.iq = iq;
     }
 
-    private int iq;
+
     public IntelligentStudent(){};
 
     public IntelligentStudent(IntelligentStudent intelligentStudent){
