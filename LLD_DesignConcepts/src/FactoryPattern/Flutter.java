@@ -6,6 +6,7 @@ public class Flutter {
         System.out.println("refreshing UI");
     }
 
+
     void setTheme(){
         System.out.println("Setting theme");
     }
