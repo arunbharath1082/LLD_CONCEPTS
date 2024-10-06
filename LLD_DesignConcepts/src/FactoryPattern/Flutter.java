@@ -13,6 +13,7 @@ public class Flutter {
 
     public UIFactory getUIFactory(SupportedPlatforms platforms){
 
+
         return UIFactoryFactory.getUIFactoryPlatform(platforms);
     }
 }
