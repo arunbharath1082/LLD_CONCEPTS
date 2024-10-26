@@ -13,7 +13,6 @@ public class SinglyLinkedList {
             this.next = null;
         }
     }
-
     private Node head;
     private Node tail;
     private int size ;
@@ -202,4 +201,46 @@ public class SinglyLinkedList {
 
         return ans;
     }
-}
+
+//Reverse a LinkedList
+
+    public void reverse(){
+        if (size==1){
+            System.out.println("cannot reverse");
+        } else if (size==2) {
+            Node temp=head;
+            temp.next=null;
+            tail.next=temp;
+            head=tail;
+            tail=tail.next;
+
+        }
+        // 2--3--4--5--6
+        //t
+        //h
+        //    t
+        else{
+            tail=head;
+            Node prev = null;
+            Node present = head;
+            Node next = present.next;
+
+        while (present != null) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if (next != null) {
+                next = next.next;
+            }
+        }
+        head = prev;
+        System.out.println(tail.value);
+
+            }
+
+
+        }
+    }
+
+
+
