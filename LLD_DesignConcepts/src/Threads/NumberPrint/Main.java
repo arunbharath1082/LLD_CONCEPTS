@@ -9,18 +9,19 @@ public class Main {
 
         NumberPrint obj1;
         System.out.println("Thread is"+ Thread.currentThread().getName());
-//        for (int i=0;i<100;i++){
-//            obj1=new NumberPrint(i);
-//            Thread t1=new Thread(obj1);
-//            t1.start();
-//        }
-
-        ExecutorService executorService= Executors.newFixedThreadPool(10);
         for (int i=0;i<100;i++){
             obj1=new NumberPrint(i);
-            executorService.submit(obj1);
+            Thread t1=new Thread(obj1);
+            t1.start();
         }
 
-        System.out.println("Thread is"+ Thread.currentThread().getName());
+//        ExecutorService executorService= Executors.newFixedThreadPool(10);
+//        for (int i=0;i<100;i++){
+//            obj1=new NumberPrint(i);
+//            executorService.submit(obj1);
+//
+//        }
+//          executorService.shutdown();
+//        System.out.println("Thread is"+ Thread.currentThread().getName());
     }
 }

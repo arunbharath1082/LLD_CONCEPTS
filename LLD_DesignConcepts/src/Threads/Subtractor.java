@@ -8,8 +8,8 @@ public class Subtractor implements Runnable {
     }
 
     @Override
-    public void  run() {
-        for (int i = 1; i <= 100000; i++) {
+    public synchronized void  run() {
+        for (int i = 1; i <= 1000; i++) {
 
             count.incValue(-i);
         }

@@ -12,8 +12,8 @@ public class Main {
 
         t1.start();
         t2.start();
-
-       t1.join(); ///join is used to wait the main thread to complete the t1,t2 threads
+        t1.join();
+       t2.join(); ///join is used to wait the main thread to complete the t1,t2 threads
 
         System.out.println(count.getValue());
     }
