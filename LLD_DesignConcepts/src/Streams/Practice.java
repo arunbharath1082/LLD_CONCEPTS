@@ -183,5 +183,9 @@ public class Practice {
         List<String> words2 = Arrays.asList("apple", "banana", "cherry", "date", "elderberry");
         Map<Integer, List<String>> result11 = words2.stream().collect(Collectors.groupingBy(String::length));
         System.out.println(result11);
+
+
     }
+
+
 }
