@@ -56,10 +56,11 @@ public class SinglyLinkedList {
         Node temp=head;
         int i=0;
         while (temp!=null){
-            System.out.println("index is"+i+"and the value is"+temp.value);
+            System.out.print(i+"__"+temp.value+"-->");
             temp=temp.next;
             i++;
         }
+        System.out.println();
         System.out.println("head: "+head.value);
     }
     public void insertAtIndex(int index,int value){
@@ -241,6 +242,85 @@ public class SinglyLinkedList {
 
 
         }
+
+// Check cycle in the linked list
+    public boolean check_cycle(){
+//        for creating cycle cycle in list
+//        tail.next=head.next;
+
+        Node fast=head;
+        Node slow=head;
+        while (fast!=null && fast.next!=null){
+
+            fast=fast.next.next;
+            slow=slow.next;
+            if (fast==slow){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+//    Length of the cycle in the linked list
+    public int length_cyle(){
+
+        tail.next=head.next.next;
+        Node fast =head;
+        Node slow=head;
+        while (fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if (fast==slow){
+                int length=1;
+                slow=slow.next;
+                while (slow!=fast){
+                    slow=slow.next;
+                    length++;
+                }
+                return length;
+            }
+        }
+        return -1;
+    }
+
+
+// Return the Cycle Node of the Linked List
+    public void cycle_node(){
+        //for cycle
+        tail.next=head.next;
+
+        Node fast=head;
+        Node slow=head;
+
+        while (fast!=null && fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if (fast == slow) {
+                slow=head;
+                while (slow!=fast ){
+                    fast=fast.next;
+                    slow=slow.next;
+                }
+                System.out.println(slow.value);
+                break;
+            }
+        }
+        System.out.println("there is not cycle");
+
+
+    }
+
+// Find the middle of the linkedList
+    public void findMiddle(){
+        Node slow=head;
+        Node fast=head;
+        while (fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        System.out.println(slow.value);
+    }
     }
 
 
