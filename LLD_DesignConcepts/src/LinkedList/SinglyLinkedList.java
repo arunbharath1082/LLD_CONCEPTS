@@ -13,6 +13,11 @@ public class SinglyLinkedList {
             this.next = null;
         }
     }
+
+    public Node getHead() {
+        return head;
+    }
+
     private Node head;
     private Node tail;
 
@@ -205,22 +210,10 @@ public class SinglyLinkedList {
     }
 
 //Reverse a LinkedList
-
     public void reverse(){
         if (size==1){
             System.out.println("cannot reverse");
-        } else if (size==2) {
-            Node temp=head;
-            temp.next=null;
-            tail.next=temp;
-            head=tail;
-            tail=tail.next;
-
         }
-        // 2--3--4--5--6
-        //t
-        //h
-        //    t
         else{
             tail=head;
             Node prev = null;
@@ -236,12 +229,90 @@ public class SinglyLinkedList {
             }
         }
         head = prev;
-        System.out.println(tail.value);
 
             }
+        }
+//Reverse a LinkedList using recursion
 
+    public void reverse_Recu(Node node){
+        if (node==tail){
+            head=tail;
+            return;
+        }
+        reverse_Recu(node.next);
+        tail.next=node;
+        tail=node;
+        tail.next=null;
+    }
+// reverse a linked list in the given left to right index
+  public Node reverseBetween(Node head, int left, int right) {
+
+        if (left==right){
+            return head;
+        }
+        Node prev=null;
+        Node current=head;
+
+        for (int i=0;current!=null&&i<left-1;i++){
+            prev=current;
+            current=current.next;
 
         }
+        Node last=prev;
+        Node newEnd=current;
+        Node next=current.next;
+        for (int i=0;current!=null && i<left-right+1;i++){
+            current.next=prev;
+            prev=current;
+            current=next;
+            if (next!=null){
+                 next=next.next;
+            }
+
+        }
+        if (last!=null){
+            last.next=prev;
+        }else {
+            head=prev;
+        }
+        newEnd.next=current;
+        return head;
+
+    }
+//Palindrome in linkedlidt
+    public void palindrome(){
+        //find the middle of the linked list
+        //reverse the second half of the linked list
+        //compare the first half and second half
+
+        Node mid=findMiddle(head);
+        Node second=mid.next;
+        mid.next=null;
+        //for reversing the second half of the linked list
+        Node prev=null;
+        Node current=second;
+        Node next=second.next;
+        while (current!=null){
+            current.next=prev;
+            prev=current;
+            current=next;
+            if (next!=null){
+                next=next.next;
+            }
+        }
+        second=prev;
+        //for comparing the first half and second half
+        Node first=head;
+        while (second!=null){
+            if (first.value!=second.value){
+                System.out.println("Not a palindrome");
+                return;
+            }
+            first=first.next;
+            second=second.next;
+        }
+        System.out.println("It is a palindrome");
+    }
 
 // Check cycle in the linked list
     public boolean check_cycle(){
@@ -312,15 +383,16 @@ public class SinglyLinkedList {
     }
 
 // Find the middle of the linkedList
-    public void findMiddle(){
+    public Node findMiddle(Node head){
         Node slow=head;
         Node fast=head;
         while (fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
-        System.out.println(slow.value);
+        return slow;
     }
+
     }
 
 
