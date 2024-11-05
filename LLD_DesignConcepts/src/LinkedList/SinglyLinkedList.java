@@ -13,15 +13,13 @@ public class SinglyLinkedList {
             this.next = null;
         }
     }
-
-    public Node getHead() {
-        return head;
-    }
-
     private Node head;
     private Node tail;
 
     private int size ;
+    public Node getHead() {
+        return head;
+    }
 
     public SinglyLinkedList() {
         this.size = 0;
@@ -91,7 +89,6 @@ public class SinglyLinkedList {
         }
             printList();
     }
-
     public void deleteFirst(){
         if (head==null){
             System.out.println("List is empty");
@@ -156,7 +153,7 @@ public class SinglyLinkedList {
 
         return -1;
     }
-
+//-------------------------------------------------------------------------------------------
 //    Problems in SINGLY LINKED LIST
 
 //    remove the duplicates from the linked list of sortedOrder
@@ -210,9 +207,10 @@ public class SinglyLinkedList {
     }
 
 //Reverse a LinkedList
-    public void reverse(){
+    public Node reverse(Node head){
         if (size==1){
             System.out.println("cannot reverse");
+            return head;
         }
         else{
             tail=head;
@@ -231,9 +229,10 @@ public class SinglyLinkedList {
         head = prev;
 
             }
+        return head;
         }
-//Reverse a LinkedList using recursion
 
+//Reverse a LinkedList using recursion
     public void reverse_Recu(Node node){
         if (node==tail){
             head=tail;
@@ -244,6 +243,7 @@ public class SinglyLinkedList {
         tail=node;
         tail.next=null;
     }
+
 // reverse a linked list in the given left to right index
   public Node reverseBetween(Node head, int left, int right) {
 
@@ -279,6 +279,89 @@ public class SinglyLinkedList {
         return head;
 
     }
+    // Reverse a linked list in the group of k
+    //very important
+    //https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+public Node reverseKGroup(Node head, int k) {
+        if (k <= 1 || head == null) {
+            return head;
+        }
+
+        Node current = head;
+        Node prev = null;
+
+		int length = size; //length of the list
+		int count = length / k;
+        while (count > 0) {
+            Node last = prev;
+            Node newEnd = current;
+
+            Node next = current.next;
+            for (int i = 0; current != null && i < k; i++) {
+                current.next = prev;
+                prev = current;
+                current = next;
+                if (next != null) {
+                    next = next.next;
+                }
+            }
+
+            if (last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+
+            newEnd.next = current;
+
+            prev = newEnd;
+			count--;
+        }
+        return head;
+    }
+
+    //https://www.geeksforgeeks.org/reverse-alternate-k-nodes-in-a-singly-linked-list/
+public Node reverseAlternateKGroup(Node head, int k) {
+        if (k <= 1 || head == null) {
+            return head;
+        }
+
+        // skip the first left-1 nodes
+        Node current = head;
+        Node prev = null;
+
+        while (current != null) {
+            Node last = prev;
+            Node newEnd = current;
+
+            // reverse between left and right
+            Node next = current.next;
+            for (int i = 0; current != null && i < k; i++) {
+                current.next = prev;
+                prev = current;
+                current = next;
+                if (next != null) {
+                    next = next.next;
+                }
+            }
+
+            if (last != null) {
+                last.next = prev;
+            } else {
+                head = prev;
+            }
+
+            newEnd.next = current;
+
+            // skip the k nodes
+            for (int i = 0; current != null && i < k; i++) {
+                prev = current;
+                current = current.next;
+            }
+        }
+        return head;
+    }
+
 //Palindrome in linkedlidt
     public void palindrome(){
         //find the middle of the linked list
@@ -392,6 +475,70 @@ public class SinglyLinkedList {
         }
         return slow;
     }
+
+    // https://leetcode.com/problems/reorder-list/
+    // Google, Facebook
+    public void reorderList(Node head) {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        Node mid = findMiddle(head);
+
+        Node hs =reverse(mid);
+        Node hf = head;
+
+        // rearrange
+        while (hf != null && hs != null) {
+            Node temp = hf.next;
+            hf.next = hs;
+            hf = temp;
+
+            temp = hs.next;
+            hs.next = hf;
+            hs = temp;
+        }
+
+        // next of tail to null
+        if (hf != null) {
+            hf.next = null;
+        }
+    }
+
+    // FaceBook, Twitter, Google: https://leetcode.com/problems/rotate-list/
+    public Node rotateRight(Node head, int k) {
+
+        //We can also use reverse technique
+        //1.first reverse the whole list
+        //2. reverse the first k elements
+        //3. reverse the remaining elements
+
+
+
+        if (k <= 0 || head == null || head.next == null) {
+            return head;
+        }
+
+        Node last = head;
+        int length = 1;
+        while (last.next != null) {
+            last = last.next;
+            length++;
+        }
+
+        last.next = head;
+        int rotations = k % length;
+        int skip = length - rotations;
+        Node newLast = head;
+        for (int i = 0; i < skip - 1; i++) {
+            newLast = newLast.next;
+        }
+        head = newLast.next;
+        newLast.next = null;
+
+        return head;
+    }
+
 
     }
 
