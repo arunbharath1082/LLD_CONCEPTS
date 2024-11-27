@@ -35,8 +35,6 @@ public class GameOfTwoStacks {
       int m = s.nextInt();
       int x = s.nextInt();
       int[] a = new int[n];
-
-
       int[] b = new int[m];
       for (int j = 0; j < n; j++) {
         a[j] = s.nextInt();
